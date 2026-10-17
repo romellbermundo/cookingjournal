@@ -2,8 +2,6 @@
 
 <div align="center">
 
-![Cooking Journal — Good Food, Better Days](images/Cooking%20Journal_%20Good%20Food%2C%20Better%20Days.png?v=20261016)
-
 **Good Food, Better Days.**
 
 *A simple place to collect favorite meals, remember what worked, and build your own recipe collection.*
