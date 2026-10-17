@@ -1,50 +1,64 @@
-name: Import recipe photos
+name: Organize recipe images
 on:
   push:
     branches: [main]
     paths:
       - 'recipe-photos.zip'
+      - '*.png'
+      - '*.jpg'
+      - '*.jpeg'
+      - '*.webp'
+      - '*.PNG'
+      - '*.JPG'
+      - '*.JPEG'
+      - '*.WEBP'
   workflow_dispatch:
 permissions:
   contents: write
 jobs:
-  import-photos:
+  organize-images:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          persist-credentials: true
-      - name: Validate and extract image ZIP
+      - name: Import ZIP and organize root images
         run: |
           python3 - <<'PY'
-          import pathlib, zipfile, shutil
-          archive = pathlib.Path('recipe-photos.zip')
-          if not archive.exists():
-              raise SystemExit('Upload recipe-photos.zip at repository root first.')
-          dest = pathlib.Path('images')
+          from pathlib import Path, PurePosixPath
+          import shutil, zipfile
+          dest = Path('images')
           dest.mkdir(exist_ok=True)
-          with zipfile.ZipFile(archive) as z:
-              entries = [i for i in z.infolist() if not i.is_dir()]
-              if not entries or len(entries) > 100:
-                  raise SystemExit('ZIP must contain 1–100 images.')
-              for entry in entries:
-                  name = pathlib.PurePosixPath(entry.filename).name
-                  if not name.lower().endswith(('.webp','.png','.jpg','.jpeg')):
-                      raise SystemExit(f'Unsupported file: {entry.filename}')
-                  if entry.file_size > 10 * 1024 * 1024:
-                      raise SystemExit(f'Image too large: {entry.filename}')
-                  if not name or name.startswith('.'):
-                      raise SystemExit('Invalid filename')
-                  with z.open(entry) as src, (dest / name).open('wb') as out:
-                      shutil.copyfileobj(src,out)
-          archive.unlink()
+          extensions = {'.png', '.jpg', '.jpeg', '.webp'}
+          archive = Path('recipe-photos.zip')
+          if archive.exists():
+              with zipfile.ZipFile(archive) as z:
+                  entries = [i for i in z.infolist() if not i.is_dir()]
+                  if not 1 <= len(entries) <= 100:
+                      raise SystemExit('ZIP must contain 1-100 images.')
+                  names = set()
+                  for entry in entries:
+                      name = PurePosixPath(entry.filename).name
+                      if not name or name.startswith('.') or Path(name).suffix.lower() not in extensions:
+                          raise SystemExit(f'Invalid image: {entry.filename}')
+                      if entry.file_size > 10 * 1024 * 1024 or name in names:
+                          raise SystemExit(f'Oversized or duplicate image: {name}')
+                      names.add(name)
+                  for entry in entries:
+                      target = dest / PurePosixPath(entry.filename).name
+                      with z.open(entry) as src, target.open('wb') as out:
+                          shutil.copyfileobj(src, out)
+              archive.unlink()
+          for path in Path('.').iterdir():
+              if path.is_file() and not path.is_symlink() and path.suffix.lower() in extensions:
+                  if path.stat().st_size > 10 * 1024 * 1024:
+                      raise SystemExit(f'Image too large: {path.name}')
+                  shutil.move(str(path), str(dest / path.name))
           PY
-      - name: Commit imported images
+      - name: Commit organized images
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add images/ recipe-photos.zip
+          git add -A
           if ! git diff --cached --quiet; then
-            git commit -m "Import recipe photos from ZIP"
+            git commit -m "Organize recipe images automatically"
             git push
           fi
