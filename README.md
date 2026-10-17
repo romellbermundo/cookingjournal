@@ -192,11 +192,11 @@ The workflow moves the file into `images/` and commits the organized result.
 
 ### Upload a ZIP of images
 
-1. Name the ZIP **`recipe-photos.zip`**.
+1. Use a ZIP named **`recipe-photos.zip`** or a browser-numbered copy such as **`recipe-photos (1).zip`**.
 2. Upload it to the repository root.
 3. Commit the upload.
 
-GitHub Actions extracts the supported images into `images/` and removes the ZIP.
+GitHub Actions recognizes numbered downloads automatically, imports the highest-numbered ZIP when multiple copies exist, replaces images with matching filenames, and removes the uploaded ZIPs.
 
 **Current safeguards:** Each imported image is limited to 10 MB, and ZIP imports accept 1–100 supported image files. Images with matching names may replace existing images, so choose filenames carefully.
 
@@ -238,6 +238,12 @@ Project development and maintenance: **Romell Bermundo**.
 ---
 
 ## 🏷️ Version History
+
+### v1.1.1 — Thoughtful finishing touches
+
+- Added a subtle footer with a welcoming quote, signature symbol, About, Disclaimer, and source-code link.
+- Kept the recipe interface intentionally minimal and documented support for numbered ZIP downloads.
+
 
 ### v1.1.0 — Documentation and image workflow
 
