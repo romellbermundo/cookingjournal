@@ -8,12 +8,12 @@
 <dialog id="editor"><form id="recipeForm"><h2 id="formTitle">Add recipe</h2><input type="hidden" id="recipeId"><label for="name">Recipe name</label><input id="name" maxlength="120" required><label for="category">Category</label><select id="category"><option>Dinner</option><option>Lunch</option><option>Breakfast</option><option>Snack</option><option>Dessert</option><option>Other</option></select><label for="photo">Recipe photo (optional)</label><input id="photo" type="file" accept="image/*"><small>Stored on this device. Large photos are automatically compressed.</small><label for="ingredients">Ingredients (one per line)</label><textarea id="ingredients" required></textarea><label for="steps">Steps (one per line)</label><textarea id="steps" required></textarea><div class="actions"><button type="submit">Save recipe</button><button type="button" id="cancel" class="secondary">Cancel</button></div></form></dialog>
 <dialog id="viewer"><h2 id="viewTitle"></h2><p id="viewCategory" class="tag"></p><h3>Ingredients</h3><ul id="viewIngredients"></ul><h3>Method</h3><ol id="viewSteps"></ol><p id="source"></p><div class="actions"><button id="closeView" class="secondary">Close</button></div></dialog>
 <footer aria-label="Cooking Journal footer">
-  <div class="footer-symbol" aria-hidden="true">✦</div>
+  <div class="footer-symbol" aria-hidden="true"><svg viewBox="0 0 64 64" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 10c-5 5 4 7-1 13M33 7c-5 6 4 8-1 15M44 11c-5 5 4 7-1 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M10 29h44c-1 17-9 25-22 25S11 46 10 29Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M12 35h40M20 43h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M20 25c7-6 17-6 24 0M17 29c8-6 22-6 30 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M45 16 57 8M42 20 55 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></div>
   <p class="footer-quote">“Good food, better days.”</p>
   <nav class="footer-links" aria-label="Footer links"><a href="#about-journal">About</a><a href="#journal-disclaimer">Disclaimer</a><a href="https://github.com/romellbermundo/cookingjournal" target="_blank" rel="noopener noreferrer">Source code ↗</a></nav>
   <p id="about-journal" class="footer-note footer-about">A personal place to save meals worth making again. Built with care.</p>
   <p id="journal-disclaimer" class="footer-note">Recipes are stored in this browser. Export backups to keep them safe. Starter recipes belong to their original creators.</p>
-  <p class="footer-note">Cooking Journal · v1.1.2</p>
+  <p class="footer-note">Cooking Journal · v1.1.3</p>
 </footer>
 <script>
 "use strict";
