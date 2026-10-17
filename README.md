@@ -239,6 +239,11 @@ Project development and maintenance: **Romell Bermundo**.
 
 ## 🏷️ Version History
 
+### v1.1.6 — A welcoming touch
+
+- Added a subtle “Bon appétit!” greeting immediately above recipe search.
+
+
 ### v1.1.5 — Seamless centered footer details
 
 - Display About and Disclaimer content in one invisible, centered footer panel.
