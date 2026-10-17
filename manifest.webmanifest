@@ -1,0 +1,9 @@
+{
+  "name": "Cooking Journal",
+  "short_name": "Recipes",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f2e9",
+  "theme_color": "#315b43"
+}
