@@ -239,6 +239,11 @@ Project development and maintenance: **Romell Bermundo**.
 
 ## 🏷️ Version History
 
+### v1.1.3 — Ramen footer symbol
+
+- Replaced the footer sparkle with a subtle, inline ramen-bowl illustration.
+
+
 ### v1.1.2 — Refined footer hierarchy
 
 - Moved the signature symbol above the quote and softened the footer typography.
