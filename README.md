@@ -239,6 +239,12 @@ Project development and maintenance: **Romell Bermundo**.
 
 ## 🏷️ Version History
 
+### v1.1.2 — Refined footer hierarchy
+
+- Moved the signature symbol above the quote and softened the footer typography.
+- Removed repeated About and Disclaimer labels and shortened the About copy.
+
+
 ### v1.1.1 — Thoughtful finishing touches
 
 - Added a subtle footer with a welcoming quote, signature symbol, About, Disclaimer, and source-code link.
