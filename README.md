@@ -239,6 +239,12 @@ Project development and maintenance: **Romell Bermundo**.
 
 ## 🏷️ Version History
 
+### v1.1.4 — Minimal expandable footer
+
+- Replaced static About and Disclaimer text with compact, click-to-expand sections.
+- Shortened the descriptions and kept the ramen icon and quote visible.
+
+
 ### v1.1.3 — Ramen footer symbol
 
 - Replaced the footer sparkle with a subtle, inline ramen-bowl illustration.
