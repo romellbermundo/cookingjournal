@@ -239,6 +239,12 @@ Project development and maintenance: **Romell Bermundo**.
 
 ## 🏷️ Version History
 
+### v1.1.5 — Seamless centered footer details
+
+- Display About and Disclaimer content in one invisible, centered footer panel.
+- Keep only one detail open at a time, with no border or background.
+
+
 ### v1.1.4 — Minimal expandable footer
 
 - Replaced static About and Disclaimer text with compact, click-to-expand sections.
